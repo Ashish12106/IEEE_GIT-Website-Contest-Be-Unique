@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Achievements</title>
+	<script src="http://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
+	 <style type="text/css">
+    
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+	font-size: 10px;
+	font-family: 'Roboto', sans-serif;
+	color: #eee;
+	}
+body{
+	width: 100%;
+	height: 100%;
+	background: #7F7FD5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+a{
+	text-decoration: none;
+	color: #eee;
+	}
+
+}
+header{
+	width: 100%;
+	height: 100px;
+	}
+.top-nav{
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	top: -100vh;
+	z-index: 50;
+	background-color: #16162D;
+	border-bottom-right-radius:100%;
+	border-bottom-left-radius:100%;
+	transition: all 650ms cubic-bezier(1,0,0,1);
+	}
+.nav-list{
+	list-style: none;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+li{
+	margin: 0 2rem;
+	}
+.nav-link{
+    font-family: 'The Historia Demo',sans-serif;
+    font-size: 3rem;
+    padding: 1rem;
+	}
+.nav-link:hover,
+.nav-link:focus{
+	background: linear-gradient(to top,#ffe838,#fd57bf);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	}
+.top-nav.open{
+	top: 0;
+	border-radius: initial;
+	}
+.menu-toggler{
+	position: absolute;
+	top: 3rem;
+	right: 5rem;
+	width: 5rem;
+	height: 4rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	cursor: pointer;
+	z-index: 1500;
+	transition: transform 650ms ease-out;
+	}
+.menu-toggler.open{
+	transform: rotate(-450deg);
+	}
+.bar{
+	background:linear-gradient(to right,#ffe838,#fd57bf);
+	width:100%;
+	height: 4px;
+	border-radius: 0.8rem;
+	}
+.bar.half{
+	width: 50%;
+	}
+.bar.start{
+	transform-origin:right;
+	transition: transform 650ms cubic-bezier(0.54,-0.81,0.57,0.57); 
+	}
+.open.bar.start{
+	transform: rotate(-450deg) translateX(0.8rem);
+	}
+.bar.end{
+	align-self: flex-end;
+	transform-origin:left;
+	transition: transform 650ms cubic-bezier(0.54,-0.81,0.57,0.57); 
+	}
+.open.bar.end{
+	transform: rotate(450deg) translateX(-0.8rem);
+	}
+
+	
+	p{
+		font-size: 1.8rem;
+		font-weight: 300;
+		padding: 2rem;
+	}
+	
+	.container1{
+		width: 100%;
+		max-width: 120rem;
+		height: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+	.section-heading{
+        margin-top: 14em;
+		text-align: center;
+		margin-bottom: 7rem;
+	}
+	.section-heading h1{
+		font-size: 3.5rem;
+		color: rgba(10, 9, 9, 0.5);
+		text-transform: uppercase;
+		font-weight: 300;
+		position: relative;
+		margin-bottom: 1rem;
+	}
+	.section-heading h1::before,
+	.section-heading h1::after{
+		content: "";
+		position: absolute;
+		bottom: -0.5rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: rgba(255,255,255,0.75);
+	}
+	.section-heading h1::before{
+		width: 10rem;
+		height: 3px;
+		border-radius: 0.8rem;
+	}
+	.section-heading h1::after{
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius:100%;
+		bottom: -1rem;
+	}
+	.section-heading h6{
+		font-size: 1.6rem;
+		font-weight: 300;
+		opacity: 0.5;
+		color: rgb(10, 9, 9);
+		
+	}
+	.present ul{
+		border-left: 4px solid #ffe838;
+		border-radius: 0.8rem;
+		background-color: rgba(0,0,0,0.05);
+		margin:0 auto;
+		position: relative;
+		padding: 1rem;/*change 5rem */
+		list-style: none;
+		text-align: left;
+		width: 100%;
+	}
+	.present{
+		font-size: 2rem;
+		font-weight: 300;
+		margin-bottom:1rem;
+		opacity: 0.9; 
+	}
+	.excom ul{
+		border-left: 4px solid #ffe838;
+		border-radius: 0.8rem;
+		background-color: rgba(0,0,0,0.05);
+		margin:0 auto;
+		position: relative;
+		padding: 1rem;
+		list-style: none;
+		text-align: center;
+		width: 100%;
+	}
+	.excom{
+		font-size: 2rem;
+		font-weight: 300;
+		margin-bottom:1rem;
+		opacity: 0.9; 
+	}
+	.title{
+	padding: 50px;
+	margin-top: 75px;
+}
+.title h1{
+	background: linear-gradient(to top,#ffe838,#fd57bf);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	text-align: center;
+	padding: 30px;
+	font-size: 50px;
+}
+.title p{
+	background: linear-gradient(to right,black,white);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	text-align: center;
+	padding: 20px;
+	font-size: 30px;
+}
+footer{
+	margin-top: -3em;
+	width: 100%;
+	padding: 10px;
+	background: #16162D;
+	color: #FAF7F7;
+	text-align: justify;
+	line-height: 40px;
+	font-size: 18px;
+	height: 440px;
+	display: block;
+}
+.inner-footer{
+	width: 95%;
+	margin: auto;
+	padding: 10px 10px 0 10px;
+	display: flex;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	justify-content: center;
+}
+.footer-items{
+	width: 25%;
+	padding: 10px 0;
+}
+h5{
+	padding: 10px 0;
+	font-size: 25px;
+	text-transform: uppercase;
+}
+.footer-items p{
+	color: #B4B1B1;
+	font-size: 15px;
+	text-align: left;
+	line-height: 30px;
+	padding-right: 30px;
+}
+h6{
+	margin: 10px 0;
+	color: #FCFAFA;
+	font-size: 16px;
+	font-weight: lighter;
+	text-transform: uppercase;
+}
+.footer-items ul{
+	list-style: none;
+	font-size: 15px;
+}
+.footer-items ul a{
+	text-decoration: none;
+	outline: none;
+	color: #FCFAFA;
+	display: block;
+}
+.footer-items ul a:hover{
+	background: linear-gradient(to top,#ffe838,#fd57bf);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	display: block;
+}
+.footer-items ul li{
+	font-size: 16px;
+}
+.social-media{
+	width: 100%;
+	color: #FCFAFA;
+	text-align: center;
+}
+.social-media a{
+	text-decoration: none;
+}
+.social-media i{
+	height: 40px;
+	width: 40px;
+	margin: 20px 5px;
+	padding: 10px;
+	color: #FCF8F8;
+	border-radius: 50%;
+	border: 1px solid white;
+	text-align: center;
+}
+.social-media i:hover{
+	background: linear-gradient(to top,#ffe838,#fd57bf);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+}
+.footer-bottom{
+	padding: 0 10px 10px 10px;
+	font-size: 15px;
+	color: #B9B9B9;
+	text-align: center;
+}
+}
+
+
+@media screen and (max-width: 1024px){
+		.nav-list{
+	 	display: flex;
+		justify-content: flex-start;
+		padding: 20px;
+	 }
+	 .nav-link{
+	   	font-size: 1.5rem;
+		 padding: 12px;
+	}
+	
+	
+
+	footer{
+		height: 600px;
+	}
+	.footer-items{
+		flex: 25%;
+	}
+	.social-media{
+	width: 100%;
+	color: #FCFAFA;
+	text-align: center;
+}
+.social-media a{
+	text-decoration: none;
+}
+.social-media i{
+	height: 0px;
+	width: 0px;
+	margin: 20px 5px;
+     padding: 10px;
+     border: none;	
+	color: #FCF8F8;
+
+	text-align: center;
+}
+.social-media i:hover{
+	background: linear-gradient(to top,#ffe838,#fd57bf);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+}
+.footer-bottom{
+	padding: 0 10px 10px 10px;
+	font-size: 15px;
+	color: #B9B9B9;
+	text-align: center;
+}
+}
+
+@media screen and (max-width: 851px){
+	.nav-list{
+	 	display: flex;
+		justify-content: flex-start;
+		padding: 5px;
+	 }
+	 .nav-link{
+	   	font-size: 1.5rem;
+		 padding: 1px;
+	}
+	
+	
+
+	footer{
+		height: 600px;
+	}
+	.footer-items{
+		flex: 25%;
+	}
+	.social-media{
+	width: 100%;
+	color: #FCFAFA;
+	text-align: center;
+}
+.social-media a{
+	text-decoration: none;
+}
+.social-media i{
+	height: 0px;
+	width: 0px;
+	margin: 20px 5px;
+     padding: 10px;
+     border: none;	
+	color: #FCF8F8;
+
+	text-align: center;
+}
+.social-media i:hover{
+	background: linear-gradient(to top,#ffe838,#fd57bf);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+}
+.footer-bottom{
+	padding: 0 10px 10px 10px;
+	font-size: 15px;
+	color: #B9B9B9;
+	text-align: center;
+}
+}
+	
+	@media screen and (max-width: 600px){
+	.top-nav{
+		height: 150px;
+	}
+	.nav-list {
+		text-align: center;
+		display: block;
+		top: 2rem;
+	}
+	
+
+	
+	footer{
+		height: 740px;
+	}
+	.footer-items p{
+		font-size: 8px;
+	}
+	.footer-items{
+		width: 100%;
+		flex: 50%;
+	}
+	.footer-items ul li{
+		font-size: 10px;
+		padding: 5px;
+		line-height: 15px;
+	}
+	.footer-items ul a{
+		font-size: 10px;
+	}
+	}
+	@media screen and (max-width: 360px){
+		.top-nav{
+		height: 160px;
+	}
+	.nav-list a{
+		text-align: center;
+		display: block;
+		top: 1em;
+	}
+	
+
+	
+	footer{
+		height: 940px;
+	}
+	.footer-items p{
+		font-size: 8px;
+	}
+	.footer-items{
+		width: 100%;
+		flex: 50%;
+	}
+	.footer-items ul li{
+		font-size: 10px;
+		padding: 5px;
+		line-height: 15px;
+	}
+	.footer-items ul a{
+		font-size: 10px;
+	}
+
+}
+
+
+
+
+	</style>
+	<script>
+		$(document).ready(function(){
+			$(".menu-toggler").on('click', function(){
+				$(this).toggleClass("open");
+				$(".top-nav").toggleClass("open");
+			});
+	
+			$(".top-nav .nav-link").on('click', function(){
+				$(".menu-toggler").removeClass("open");
+				$(".top-nav").removeClass("open");
+			});
+			
+			
+		});
+	
+	
+		
+	</script>
+</head>
+<body>
+<header>
+		<div class="menu-toggler">
+		<div class="bar half start"></div>
+		<div class="bar"></div>
+		<div class="bar half end"></div>
+		</div>
+		<nav class="top-nav">
+			<ul class="nav-list">
+				<li>
+					<a href="index.html" class="nav-link">Home</a>
+				</li>
+				<li>
+					<a href="history.html" class="nav-link">History</a>
+				</li>
+				<li>
+					<a href="achievement.html" class="nav-link">Achievemets</a>
+				</li>
+				<li>
+					<a href="events.html" class="nav-link">Events</a>
+				</li>
+
+				<li>
+					<a href="form/registration form.html" class="nav-link">Registration</a>
+				</li>
+				<li>
+					<a href="contact.html" class="nav-link">Contact Us</a>
+				</li>
+
+			</ul>
+
+		</nav>
+	</header>
+<section class="Achievement" id="Achievement">
+		<div class="container1">
+			<div class="section-heading">
+				<h1>ACHIEVEMENTS</h1>
+				<h6>IEEE KLS-GIT</h6>
+			</div>
+			<div class="present" data-aos="fade-down" data-aos.delay="100">
+			 <ul>
+				<li>
+					<p>
+						One of the oldest student branches of North Karnataka region with an history of over two decades.
+					</p>	
+				</li>
+				<li>
+					<p>
+					Global IEEE had alloted funds to conduct the "star program" in the year 2014-2015 for being one of the most active 
+					chapter in region, using these funds we conducted motivational events in rural areas (i.e. the goverment schools).
+				    </p>
+				</li>
+				<li>
+					<p>
+					For the year 2015-2016 Vardhana Kulkarni and Pranali Shinde from KLS GIT were selected as representatives for North Karnataka region.
+				    </p>
+				</li>
+				<li>
+					<p>
+					Student Branch got seed amount in 2015-16 for IEEE Star program.
+					</p>
+				</li>
+				<li>
+					<p>
+					Three of our professors Dr. D.V.Kulkarni, Dr. V.P. Gejji and Prof. N.F.Deshpande were elected as senior members of IEEE.
+					</p>
+				</li>
+			 </ul>
+		    </div>
+		</div>
+</section>
+<section class="Achievement" id="Achievement">
+		<div class="container1">
+			<div class="section-heading">
+				<h1>EXECOM 2020</h1>
+				<h6>IEEE KLS-GIT</h6>
+			</div>
+			<div class="excom">
+			 <ul>
+				<li>
+					<p>
+						Chair- Prasad G Kadam
+					</p>	
+				</li>
+				<li>
+					<p>
+						Vice-Chair- Shreya Gadatarannavar
+				    </p>
+				</li>
+				<li>
+					<p>
+						Secretary- Vijayalakshmi Lokhande
+				    </p>
+				</li>
+				<li>
+					<p>
+					Treasure- Sheejit Savadatte
+					</p>
+				</li>
+				<li>
+					<p>
+					SBMDC Chair- Somangouda Patil
+					</p>
+				</li>
+				<li>
+					<p>
+					Event lead- Parwathreddy Madani
+					</p>
+				</li>
+				<li>
+					<p>
+					Student Activity Co-ordinator- Amogh Mathad
+					</p>
+				</li>
+				<li>
+					<p>
+					 Co-Student Activity Co-ordinator- Sourabh Kulkarni
+					</p>
+				</li>
+				<li>
+					<p>
+					Publicity Lead- Parshuram Gore
+					</p>
+				</li>
+				<li>
+					<p>
+					WIE Chair- Priyadarshani Desai
+					</p>
+				</li>
+				<li>
+					<p>
+					WIE viceChair- Disha Shedshyal
+				</li>
+			 </ul>
+		    </div>
+		</div>
+</section>
+<div class="title">
+		<!--<h1>IEEE</h1>-->
+		<!--<p>KLS GOGTE INSTITUTE OF TECHNOLOGY, BELAGAVI</p>-->
+	</div>
+	</div>
+	<footer>
+		<div class = "inner-footer">
+			<div class = "footer-items">
+				<h5>IEEE GIT</h5> 
+				<p>The IEEE Student branch was initiated in 1995-96. IEEE Student branch is the first professional student chapter of KLS's GIT and active since 1995-96. Current branch counselor: Prof. Abhishek Deshmukh.</p>
+			</div>
+			<div class = "footer-items">
+				<h6>Quick Links</h6>
+				<ul>
+				 		<a href="index.html">HOME</a>
+       			 	<a href="history.html">HISTORY</a>
+       			 	<a href="achievement.html">ACHIEVEMENTS</a>
+					<a href="form/registration form.html">REGISTRATION</a>
+					<a href="events.html">EVENTS</a>
+					<a href="contact.html">CONTACT US</a>
+				</ul>
+			</div>
+			<div class = "footer-items">
+				<h6>Events</h6>
+				<ul>
+				 	<li>INFINITY</li>
+       			 	<li>i-GREEN</li>
+       			 	<li>UDAAN</li>
+					<li>SLP(Student Leardership Program)</li>
+					<li>IEEE DAY</li>
+				</ul>
+			</div>
+			<div class = "footer-items">
+				<h6>Contact Us</h6>
+				<ul>
+				 	<li><i class = "fa fa-map-marker"></i> KLS Gogte Institute of Technology, Belagavi.<br></li>
+       			 	<li><i class = "fa fa-phone"></i> +91 9856425833 / +91 8858472631<br></li>
+					<li><i class = "fa fa-envelope"></i> ieeegit95@gmail.com<br></li>
+				</ul>
+				<div class = "social-media">
+					<a href = "#"><i class = "fa fa-facebook"></i></a>
+					<a href = "#"><i class = "fa fa-instagram"></i></a>
+					<a href = "#"><i class = "fa fa-twitter"></i></a>
+					<a href = "#"><i class = "fa fa-google-plus"></i></a>
+					<a href = "#"><i class = "fa fa-youtube"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class = "footer-bottom">
+			Copyright <i class = "fa fa-copyright"></i> to IEEE GIT. All rights reserved.
+		</div>
+	</footer>
+</body>
+</html>
